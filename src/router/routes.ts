@@ -8,9 +8,9 @@ const routes: RouteRecordRaw[] = [
       { path: '', component: () => import('pages/Index.vue') },
       { path: 'login', component: () => import('pages/login.vue') },
       { path: 'form', component: () => import('pages/form.vue') },
-      { path: 'fsrform', component: () => import('pages/fsrform.vue') },
       { path: 'try1', component: () => import('pages/try1.vue') },
-      { path: 'try', component: () => import('pages/try.vue') }
+      { path: 'try', component: () => import('pages/try.vue') },
+      { path: 'fsrform', component: () => import('src/pages/fsrform.vue') }
      
     ],
   },

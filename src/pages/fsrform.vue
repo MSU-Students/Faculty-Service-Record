@@ -1,229 +1,254 @@
 <template>
   <div class="q-pa-md">
+    <div class="q-gutter-md row float-right q-na-sm">
+      <q-select
+        label="Month"
+        transition-show="scale"
+        transition-hide="scale"
+        filled
+        v-model="model1"
+        :options="options2"
+        style="width: 250px"
+      />
+      <q-select
+        label="Year"
+        transition-show="scale"
+        transition-hide="scale"
+        filled
+        v-model="model"
+        :options="options1"
+        style="width: 250px"
+      />
+    </div>
+  </div>
+  <div class="q-pt-xl">
     <q-table
+      separator="cell"
       title="NUMBER OF HOURS"
       :rows="rows"
       :columns="columns"
       row-key="name"
-      binary-state-sort
     >
       <template v-slot:body="props">
         <q-tr :props="props">
+          <q-td key="no" :props="props">
+            {{ props.row.no }}
+          </q-td>
           <q-td key="name" :props="props">
             {{ props.row.name }}
-            <q-popup-edit v-model="props.row.name">
-              <q-input v-model="props.row.name" dense autofocus counter />
-            </q-popup-edit>
           </q-td>
-          <q-td key="calories" :props="props">
-            {{ props.row.calories }}
+          <q-td key="instruction_class" :props="props">
+            {{ props.row.instruction_class }}
             <q-popup-edit
-              v-model="props.row.calories"
-              title="Update calories"
+              v-model="props.row.instruction_class"
+              title="no. of hours"
               buttons
             >
               <q-input
                 type="number"
-                v-model="props.row.calories"
+                v-model="props.row.instruction_class"
                 dense
                 autofocus
               />
             </q-popup-edit>
           </q-td>
-          <q-td key="hhh" :props="props">
-            {{ props.row.calories }}
+          <q-td key="consultation_activities" :props="props">
+            {{ props.row.consultation_activities }}
             <q-popup-edit
-              v-model="props.row.calories"
-              title="Update hhh"
+              v-model="props.row.consultation_activities"
+              title="no. of hours"
               buttons
-            >
-              <q-input type="number" v-model="props.row.hhh" dense autofocus />
-            </q-popup-edit>
-          </q-td>
-          <q-td key="fat" :props="props">
-            <div class="text-pre-wrap">{{ props.row.fat }}</div>
-            <q-popup-edit v-model="props.row.fat">
-              <q-input
-                type="textarea"
-                v-model="props.row.fat"
-                dense
-                autofocus
-              />
-            </q-popup-edit>
-          </q-td>
-          <q-td key="carbs" :props="props">
-            {{ props.row.carbs }}
-            <q-popup-edit
-              v-model="props.row.carbs"
-              title="Update carbs"
-              buttons
-              persistent
             >
               <q-input
                 type="number"
-                v-model="props.row.carbs"
+                v-model="props.row.consultation_activities"
                 dense
                 autofocus
-                hint="Use buttons to close"
               />
             </q-popup-edit>
           </q-td>
-          <q-td key="protein" :props="props">{{ props.row.protein }}</q-td>
-          <q-td key="sodium" :props="props">{{ props.row.sodium }}</q-td>
-          <q-td key="calcium" :props="props">{{ props.row.calcium }}</q-td>
-          <q-td key="iron" :props="props">{{ props.row.iron }}</q-td>
+          <q-td key="community_institutional" :props="props">
+            {{ props.row.community_institutional }}
+            <q-popup-edit
+              v-model="props.row.community_institutional"
+              title="no. of hours"
+              buttons
+            >
+              <q-input
+                type="number"
+                v-model="props.row.community_institutional"
+                dense
+                autofocus
+              />
+            </q-popup-edit>
+          </q-td>
+          <q-td key="hours" :props="props">
+            {{ props.row.hours }}
+            <q-popup-edit v-model="props.row.hour" title="no. of hours" buttons>
+              <q-input
+                type="number"
+                v-model="props.row.hours"
+                dense
+                autofocus
+              />
+            </q-popup-edit>
+          </q-td>
+          <q-td key="absent_onleave_officialbusiness_undertime" :props="props">
+            {{ props.row.absent_onleave_officialbusiness_undertime }}
+            <q-popup-edit
+              v-model="props.row.absent_onleave_officialbusiness_undertime"
+              title="no. of hours"
+              buttons
+            >
+              <q-input
+                type="number"
+                v-model="props.row.absent_onleave_officialbusiness_undertime"
+                dense
+                autofocus
+              />
+            </q-popup-edit>
+          </q-td>
         </q-tr>
       </template>
     </q-table>
   </div>
+  <div class="text-h6 q-pa-md row">
+    TOTAL: <q-input outlined v-model="text" style="width: 75px" />
+  </div>
+
+  <q-btn
+    push
+    color="primary"
+    glossy
+    label="Submit"
+    class="float-right q-mx-xl"
+    style="width: 200px"
+  />
+  <q-btn
+    push
+    color="red-10"
+    glossy
+    label="Reset"
+    class="float-right q-mx-xl"
+    style="width: 200px"
+  />
 </template>
 
 <script>
+import { ref } from 'vue';
 const columns = [
   {
-    name: 'name',
-    required: true,
-    label: 'Dessert (100g serving)',
-    align: 'left',
-    // field: (row) => row.name,
-    //format: (val) => `${val}`,
-    sortable: true,
-  },
-  {
-    name: 'calories',
+    name: 'no',
+    label: 'no.',
     align: 'center',
-    label: 'Calories',
-    field: 'calories',
-  },
-  { name: 'fat', label: 'Fat (g)', field: 'fat', sortable: true },
-  { name: 'hhh', label: 'hhh', field: 'hhh' },
-  { name: 'carbs', label: 'Carbs (g)', field: 'carbs' },
-  { name: 'protein', label: 'Protein (g)', field: 'protein' },
-  { name: 'sodium', label: 'Sodium (mg)', field: 'sodium' },
-  {
-    name: 'calcium',
-    label: 'Calcium (%)',
-    field: 'calcium',
-    sortable: true,
-    sort: (a, b) => parseInt(a, 10) - parseInt(b, 10),
   },
   {
-    name: 'iron',
-    label: 'Iron (%)',
-    field: 'iron',
-    sortable: true,
-    sort: (a, b) => parseInt(a, 10) - parseInt(b, 10),
+    name: 'name',
+    label: 'Day',
+    align: 'center',
+  },
+  {
+    name: 'instruction_class',
+    align: 'center',
+    label: 'Instruction Class',
+    field: 'instruction_class',
+  },
+  {
+    name: 'consultation_activities',
+    align: 'center',
+    label: 'Consultation Activities',
+    field: 'consultation_activities',
+  },
+  {
+    name: 'community_institutional',
+    align: 'center',
+    label: 'Community or Institutional',
+    field: 'community_institutional',
+  },
+  {
+    name: 'hours',
+    align: 'center',
+    label: 'Hours',
+    field: 'hours',
+  },
+  {
+    name: 'absent_onleave_officialbusiness_undertime',
+    align: 'center',
+    label: 'Absent, On Leave, Official Business, Undertime',
+    field: 'absent_onleave_officialbusiness_undertime',
   },
 ];
-
 const rows = [
   {
-    name: 'Frozen Yogurt',
-    calories: 159,
-    fat: 6.0,
-    carbs: 24,
-    protein: 4.0,
-    sodium: 87,
-    calcium: '14%',
-    iron: '1%',
+    no: 1,
+    name: 'Monday',
+    instruction_class: '',
+    consultation_activities: '',
+    community_institutional: '',
+    hours: '',
+    absent_onleave_officialbusiness_undertime: '',
   },
   {
-    name: 'Ice cream sandwich',
-    calories: 237,
-    fat: 9.0,
-    carbs: 37,
-    protein: 4.3,
-    sodium: 129,
-    calcium: '8%',
-    iron: '1%',
+    no: 2,
+    name: 'Tuesday',
+    instruction_class: '',
+    consultation_activities: '',
+    community_institutional: '',
+    hours: '',
+    absent_onleave_officialbusiness_undertime: '',
   },
   {
-    name: 'Eclair',
-    calories: 262,
-    fat: 16.0,
-    carbs: 23,
-    protein: 6.0,
-    sodium: 337,
-    calcium: '6%',
-    iron: '7%',
+    no: 3,
+    name: 'Wednesday',
+    instruction_class: '',
+    consultation_activities: '',
+    community_institutional: '',
+    hours: '',
+    absent_onleave_officialbusiness_undertime: '',
   },
   {
-    name: 'Cupcake',
-    calories: 305,
-    fat: 3.7,
-    carbs: 67,
-    protein: 4.3,
-    sodium: 413,
-    calcium: '3%',
-    iron: '8%',
+    no: 4,
+    name: 'Thursday',
+    instruction_class: '',
+    consultation_activities: '',
+    community_institutional: '',
+    hours: '',
+    absent_onleave_officialbusiness_undertime: '',
   },
   {
-    name: 'Gingerbread',
-    calories: 356,
-    fat: 16.0,
-    carbs: 49,
-    protein: 3.9,
-    sodium: 327,
-    calcium: '7%',
-    iron: '16%',
-  },
-  {
-    name: 'Jelly bean',
-    calories: 375,
-    fat: 0.0,
-    carbs: 94,
-    protein: 0.0,
-    sodium: 50,
-    calcium: '0%',
-    iron: '0%',
-  },
-  {
-    name: 'Lollipop',
-    calories: 392,
-    fat: 0.2,
-    carbs: 98,
-    protein: 0,
-    sodium: 38,
-    calcium: '0%',
-    iron: '2%',
-  },
-  {
-    name: 'Honeycomb',
-    calories: 408,
-    fat: 3.2,
-    carbs: 87,
-    protein: 6.5,
-    sodium: 562,
-    calcium: '0%',
-    iron: '45%',
-  },
-  {
-    name: 'Donut',
-    calories: 452,
-    fat: 25.0,
-    carbs: 51,
-    protein: 4.9,
-    sodium: 326,
-    calcium: '2%',
-    iron: '22%',
-  },
-  {
-    name: 'KitKat',
-    calories: 518,
-    fat: 26.0,
-    carbs: 65,
-    protein: 7,
-    sodium: 54,
-    calcium: '12%',
-    iron: '6%',
+    no: 5,
+    name: 'Friday',
+    instruction_class: '',
+    consultation_activities: '',
+    community_institutional: '',
+    hours: '',
+    absent_onleave_officialbusiness_undertime: '',
   },
 ];
 
 export default {
   setup() {
     return {
+      rows: ref(rows),
       columns,
-      rows,
+      model: ref(null),
+      model1: ref(null),
+      text: ref(''),
+      options2: [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ],
+      options1: ['2019', '2020', '2021', '2022', '2023', '2024', '2025'],
     };
   },
 };

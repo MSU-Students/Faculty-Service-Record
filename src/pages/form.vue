@@ -1,6 +1,6 @@
 <template>
   <q-page class="bg-image">
-    <q-card class="absolute-center q-pa-lg bg-blue-grey-1" style="width: 25%">
+    <q-card class="absolute-center q-pa-lg" style="width: 30%">
       <div class="text-h5 text-center text-bold q-pb-md">
         FACULTY SERVICE RECORD
       </div>
@@ -48,7 +48,6 @@ import { ref } from 'vue';
 export default {
   setup() {
     const $q = useQuasar();
-
     const name = ref(null);
     const accept = ref(false);
 
@@ -62,7 +61,6 @@ export default {
             color: 'red-5',
             textColor: 'white',
             icon: 'warning',
-            message: 'You need to accept the license and terms first',
           });
         } else {
           $q.notify({

@@ -1,8 +1,25 @@
 <template>
-  <div class="q-pa-md" style="max-width: 300px">
-    <div class="q-gutter-md">
-      <q-select filled v-model="model1" :options="options2" label="month" />
-      <q-select filled v-model="model" :options="options1" label="year" />
+  <div class="q-pa-md">
+    <div class="q-gutter-md row">
+      <q-select
+        label="Month"
+        transition-show="scale"
+        transition-hide="scale"
+        filled
+        v-model="model1"
+        :options="options2"
+        style="width: 250px"
+      />
+
+      <q-select
+        label="Year"
+        transition-show="scale"
+        transition-hide="scale"
+        filled
+        v-model="model"
+        :options="options1"
+        style="width: 250px"
+      />
     </div>
   </div>
 </template>

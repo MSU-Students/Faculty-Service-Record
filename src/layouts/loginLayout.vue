@@ -10,7 +10,7 @@
 
 <style>
 .bg-image {
-  background-image: url(../assets/image/pexels-photo-301926.jpeg);
+  background-image: url(../assets/image/pexels-photo-1631677.jpeg);
   background-blend-mode: overlay;
   background-position: center;
   background-size: 100%;
