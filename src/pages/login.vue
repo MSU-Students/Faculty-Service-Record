@@ -1,72 +1,77 @@
 <template>
-  <q-page class="bg-image">
-    <div class="q-gutter-md row items-start">
-      <div class="q-gutter-md">
-        <q-card class="absolute-center q-pa-lg" style="width: 30%">
-          <div class="text-h5 text-center text-bold q-pb-md">
-            Login to continue
-          </div>
+  <q-page >
+    <div class="q-pa-md row">
+      <q-card class="absolute-center q-pa-lg">
+        <div class="text-h5 text-center text-bold q-pb-md">
+          Login to continue
+        </div>
 
-          <q-input square filled v-model="text" label="Enter your username" />
+        <q-input square filled v-model="text" label="Enter your username" />
 
-          <q-input
-            v-model="password"
-            label="Enter your password"
-            filled
-            :type="isPwd ? 'password' : 'text'"
-            class="q-pt-md"
-          >
-            <template v-slot:append>
-              <q-icon
-                :name="isPwd ? 'visibility_off' : 'visibility'"
-                class="cursor-pointer"
-                @click="isPwd = !isPwd"
-              />
-            </template>
-          </q-input>
-
-          <div class="q-pt-lg flex flex-center">
-            You are logging in as:
-            <div class="q-ma-xs"></div>
-            <strong>{{ color }}</strong>
-          </div>
-          <div class="q-gutter-sm q-pt-md">
-            <q-radio
-              keep-color
-              v-model="color"
-              val="Faculty"
-              label="Faculty"
-              color="teal"
+        <q-input
+          v-model="password"
+          label="Enter your password"
+          filled
+          :type="isPwd ? 'password' : 'text'"
+          class="q-pt-md"
+        >
+          <template v-slot:append>
+            <q-icon
+              :name="isPwd ? 'visibility_off' : 'visibility'"
+              class="cursor-pointer"
+              @click="isPwd = !isPwd"
             />
-            <q-radio
-              keep-color
-              v-model="color"
-              val="Employee"
-              label="Employee"
-              color="orange"
-            />
-            <q-radio
-              keep-color
-              v-model="color"
-              val="Chairperson"
-              label="Chairperson"
-              color="red"
-            />
-          </div>
+          </template>
+        </q-input>
 
-          <div class="text-caption text-weight-light text-red-6 q-pa-md">
-            *note: Please check again your inputs
-          </div>
-          <q-btn
-            push
-            color="blue"
-            glossy
-            label="LOGIN"
-            style="width: 100%"
-            to="form"
+        <div class="q-pt-lg flex flex-center">
+          You are logging in as:
+          <div class="q-ma-xs"></div>
+          <strong>{{ color }}</strong>
+        </div>
+        <div class="q-gutter-sm q-pt-md">
+          <q-radio
+            keep-color
+            v-model="color"
+            val="Faculty"
+            label="Faculty"
+            color="teal"
           />
-        </q-card>
-      </div>
+          <q-radio
+            keep-color
+            v-model="color"
+            val="Employee"
+            label="Employee"
+            color="orange"
+          />
+          <q-radio
+            keep-color
+            v-model="color"
+            val="Chairperson"
+            label="Chairperson"
+            color="red"
+          />
+          <q-radio
+            keep-color
+            v-model="color"
+            val="Admin"
+            label="Admin"
+            color="gray"
+          />
+        </div>
+
+        <div class="text-caption text-weight-light text-red-6 q-pa-md">
+          *note: Please check again your inputs
+        </div>
+        <q-btn
+          push
+          color="blue"
+          glossy
+          label="LOGIN"
+          style="width: 100%"
+          to="form"
+        />
+      </q-card>
     </div>
   </q-page>
 </template>
@@ -85,18 +90,22 @@ export default {
       options: [
         {
           label: 'Faculty',
-          value: 'op1',
+          value: 'op1'
         },
         {
           label: 'Employee',
-          value: 'op2',
+          value: 'op2'
         },
         {
           label: 'Chairperson',
-          value: 'op3',
+          value: 'op3'
         },
-      ],
+        {
+          label: 'Admin',
+          value: 'op4'
+        }
+      ]
     };
-  },
+  }
 };
 </script>

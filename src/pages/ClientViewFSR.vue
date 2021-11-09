@@ -2,7 +2,7 @@
   <div class="q-pa-md">
     <div class="text-h6 q-pb-md">
       Name: Sakuragi Hanamichi
-     <!-- <q-img
+    <!--  <q-img
         src="../assets/image/FB_IMG_1627831409221.jpg"
         style="height: 140px; max-width: 150px"
         class="float-right q-mx-xl"

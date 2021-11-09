@@ -1,5 +1,5 @@
 <template>
-  <q-page class="bg-image">
+  <q-page>
     <q-card class="absolute-center q-pa-lg" style="width: 30%">
       <div class="text-h5 text-center text-bold q-pb-md">
         FACULTY SERVICE RECORD
@@ -27,13 +27,12 @@
         </div>
 
         <div>
-          <q-btn label="Submit" type="submit" color="primary" to="fsrform" />
           <q-btn
-            label="Reset"
-            type="reset"
+            label="Submit"
+            type="submit"
             color="primary"
-            flat
-            class="q-ml-md"
+            to="fsrform"
+            class="float-right q-ms-sm"
           />
         </div>
       </q-form>

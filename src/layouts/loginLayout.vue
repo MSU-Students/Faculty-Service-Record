@@ -7,7 +7,7 @@
     </q-page-container>
   </q-layout>
 </template>
-
+<!--
 <style>
 .bg-image {
   background-image: url(../assets/image/pexels-photo-1631677.jpeg);
@@ -16,3 +16,4 @@
   background-size: 100%;
 }
 </style>
+!-->
